@@ -1,0 +1,64 @@
+{
+  "status": true,
+  "result": {
+    "id": 1,
+    "position": 1,
+    "title": "Case 1",
+    "description": null,
+    "preconditions": null,
+    "postconditions": null,
+    "severity": 4,
+    "priority": 0,
+    "type": 1,
+    "layer": 0,
+    "is_flaky": 0,
+    "is_muted": false,
+    "behavior": 1,
+    "automation": 0,
+    "isManual": true,
+    "isToBeAutomated": false,
+    "status": 0,
+    "milestone_id": null,
+    "suite_id": null,
+    "links": [
+
+    ],
+    "custom_fields": [
+
+    ],
+    "attachments": [
+
+    ],
+    "steps_type": "classic",
+    "steps": [
+      {
+        "hash": "1b1d7a5ebc405850df55febea94880e5dde412dc",
+        "position": 1,
+        "shared_step_hash": null,
+        "shared_step_nested_hash": null,
+        "attachments": [
+
+        ],
+        "action": "action1",
+        "expected_result": "result1",
+        "data": "data1",
+        "steps": [
+
+        ]
+      }
+    ],
+    "params": [
+
+    ],
+    "member_id": 1,
+    "author_id": 274618,
+    "tags": [
+
+    ],
+    "deleted": null,
+    "created": "2025-01-12T08:13:23.000000Z",
+    "updated": "2025-01-12T08:13:23.000000Z",
+    "created_at": "2025-01-12T08:13:23+00:00",
+    "updated_at": "2025-01-12T08:13:23+00:00"
+  }
+}
