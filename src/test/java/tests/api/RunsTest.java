@@ -1,13 +1,12 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.runs.CreateRunRq;
 import models.Response;
-import models.cases.CreateCaseRq;
-import models.project.CreateProjectRq;
 import models.runs.RunResponse;
-import models.suite.CreateSuiteRq;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import static adapters.CasesAPI.createCase;
 import static adapters.ProjectAPI.createProject;
@@ -15,9 +14,10 @@ import static adapters.ProjectAPI.deleteProjectByCode;
 import static adapters.RunsAPI.*;
 import static adapters.SuitAPI.createSuite;
 
-public class RunsTest extends BaseAPITest{
+public class RunsTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Run via API", description = "Create test run by API")
+    @Description("Create test run using API functions.")
     public void createNewTestRun() {
         createProject(proj_rq);
         createSuite(suite_rq, "QASE");

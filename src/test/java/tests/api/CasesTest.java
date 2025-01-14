@@ -1,13 +1,13 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.Response;
 import models.cases.CreateCaseRq;
 import models.cases.CreateCasesAtOnce;
 import models.cases.Step;
-import models.project.CreateProjectRq;
-import models.suite.CreateSuiteRq;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,9 +18,10 @@ import static adapters.ProjectAPI.deleteProjectByCode;
 import static adapters.SuitAPI.createSuite;
 
 
-public class CasesTest extends BaseAPITest {
+public class CasesTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Test case via API", description = "Test case creation using API.")
+    @Description("Create test case with title and steps using API.")
     public void createTestCase() {
         createProject(proj_rq);
         createSuite(suite_rq, "QASE");
@@ -44,7 +45,8 @@ public class CasesTest extends BaseAPITest {
         deleteProjectByCode("QASE");
     }
 
-    @Test
+    @Test(testName = "Update case via API", description = "Update created case.")
+    @Description("Update created test case using API.")
     public void updateTestcase() {
         createProject(proj_rq);
         createSuite(suite_rq, "QASE");
@@ -82,7 +84,8 @@ public class CasesTest extends BaseAPITest {
         deleteProjectByCode("QASE");
     }
 
-    @Test
+    @Test(testName = "Many cases via API", description = "Create bunch of test cases at once")
+    @Description("Create 3 test cases using one API call.")
     public void createManyCases() {
         createProject(proj_rq);
         createSuite(suite_rq, "QASE");

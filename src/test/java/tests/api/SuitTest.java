@@ -1,18 +1,20 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.Response;
-import models.project.CreateProjectRq;
 import models.suite.CreateSuiteRq;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import static adapters.ProjectAPI.createProject;
 import static adapters.ProjectAPI.deleteProjectByCode;
 import static adapters.SuitAPI.*;
 
-public class SuitTest extends BaseAPITest{
+public class SuitTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Suite via API", description = "Create suite using API")
+    @Description("Create suite using API")
     public void createTestSuite() {
         createProject(proj_rq);
         CreateSuiteRq suite_rq = CreateSuiteRq.builder()
@@ -28,7 +30,8 @@ public class SuitTest extends BaseAPITest{
         deleteProjectByCode("QASE");
     }
 
-    @Test
+    @Test(testName = "Update suite via API", description = "Update created suite.")
+    @Description("Update created test suite using API.")
     public void updateTestSuite() {
         createProject(proj_rq);
         CreateSuiteRq rq = CreateSuiteRq.builder()

@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.CreatePlanRq;
 import models.Response;
 import models.cases.CreateCaseRq;
@@ -7,6 +8,7 @@ import models.project.CreateProjectRq;
 import models.suite.CreateSuiteRq;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +19,10 @@ import static adapters.ProjectAPI.createProject;
 import static adapters.ProjectAPI.deleteProjectByCode;
 import static adapters.SuitAPI.createSuite;
 
-public class PlanTest extends BaseAPITest{
+public class PlanTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Plan via API", description = "Create test plan via API.")
+    @Description("Create test plan using API functions.")
     public void createNewPlan() {
         createProject(proj_rq);
         createSuite(suite_rq, "QASE");

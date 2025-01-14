@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.project.CreateProjectRq;
 import models.project.CreateProjectRs;
 import org.testng.Assert;
@@ -9,7 +10,8 @@ import static adapters.ProjectAPI.*;
 
 public class ProjectTest {
 
-    @Test
+    @Test(testName = "Project via API", description = "Create project using API.")
+    @Description("Create new project using available API functions")
     public void createNewProject() {
         CreateProjectRq rq = CreateProjectRq.builder()
                 .title("QA Test")

@@ -1,20 +1,22 @@
 package tests.api;
 
+import io.qameta.allure.Description;
 import models.Response;
 import models.defects.CreateDefectRq;
 import models.defects.DefectResponse;
 import models.defects.Status;
-import models.project.CreateProjectRq;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import static adapters.DefectsAPI.*;
 import static adapters.ProjectAPI.createProject;
 import static adapters.ProjectAPI.deleteProjectByCode;
 
-public class DefectTest extends BaseAPITest{
+public class DefectTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Full Defect Cycle", description = "Check full defect cycle")
+    @Description("Test full defect cycle using all API functions.")
     public void checkFullDefectCycle() {
         createProject(proj_rq);
         CreateDefectRq rq = CreateDefectRq.builder()
