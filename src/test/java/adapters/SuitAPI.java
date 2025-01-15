@@ -2,6 +2,7 @@ package adapters;
 
 import models.Response;
 import models.suite.CreateSuiteRq;
+import models.suite.SuiteRS;
 
 public class SuitAPI extends BaseAPI{
 
@@ -19,13 +20,15 @@ public class SuitAPI extends BaseAPI{
                 .as(Response.class);
     }
 
-    public static void getSpecificSuite(String code, String suitID) {
-        spec
+    public static SuiteRS getSpecificSuite(String code, String suitID) {
+        return spec
                 .when()
                 .get(suitUrl+ code +"/"+ suitID)
                 .then()
                 .log().all()
-                .statusCode(200);
+                .statusCode(200)
+                .extract()
+                .as(SuiteRS.class);
     }
 
     public static void updateSpecificSuite(String code, String suitID, CreateSuiteRq createSuiteRq) {

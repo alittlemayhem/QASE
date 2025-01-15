@@ -8,16 +8,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pages.CreatedProjectPage;
-import pages.DefectsPage;
-import pages.LoginPage;
-import pages.TestPlanPage;
+import org.testng.asserts.SoftAssert;
+import pages.*;
 import utils.AllureUtils;
 import utils.PropertyReader;
 
@@ -31,6 +31,9 @@ public class BaseTest {
     public DefectsPage defectsPage;
     public CreatedProjectPage createdProjectPage;
     public TestPlanPage testPlanPage;
+    public ProjectsPage projectsPage;
+    public NewProjectModal newProjectModal;
+    public SoftAssert softAssert;
 
     public CreateProjectRq proj_rq = CreateProjectRq.builder()
             .title("QASE")
@@ -59,16 +62,21 @@ public class BaseTest {
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
+            driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
+            driver.manage().window().maximize();
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        softAssert = new SoftAssert();
 
         loginPage = new LoginPage(driver);
         defectsPage = new DefectsPage(driver);
         createdProjectPage = new CreatedProjectPage(driver);
         testPlanPage = new TestPlanPage(driver);
+        projectsPage = new ProjectsPage(driver);
+        newProjectModal = new NewProjectModal(driver);
     }
 
     @AfterMethod(alwaysRun = true)

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,34 +8,43 @@ import wrappers.PickList;
 
 public class CreateEditDefectPage extends BasePage{
 
+    private final String CREATE_DEFECT_BUTTON = "//button[text()='Create defect']";
+    private final String DEFECT_TITLE = "//input[@name='title']";
+    private final String ACTUAL_RESULT = "//*[text() = 'Actual result']//following::input[@value]";
+    private final String UPDATE_DEFECT = "//button[text()='Update defect']";
+
     public CreateEditDefectPage(WebDriver driver) {
         super(driver);
     }
 
+    @Step("Open page to create or edit defect in project with code - {code}.")
     public CreateEditDefectPage open(String code) {
         driver.get("https://app.qase.io/defect/"+code+"/create");
         return this;
     }
 
     public CreateEditDefectPage isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Create defect']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_DEFECT_BUTTON)));
         return this;
     }
 
+    @Step("Create defect with required fields: title - {defTitle}, actual result - {result}, severity - {severity}")
     public CreateEditDefectPage fillRequiredDefectFields(String defTitle, String result, String severity) {
-        driver.findElement(By.xpath("//input[@name='title']")).sendKeys(defTitle);
-        driver.findElement(By.xpath("//*[text() = 'Actual result']//following::input[@value]")).sendKeys(result);
+        driver.findElement(By.xpath(DEFECT_TITLE)).sendKeys(defTitle);
+        driver.findElement(By.xpath(ACTUAL_RESULT)).sendKeys(result);
         //new PickList(driver).selectPicklistItem("Severity", severity);
         return this;
     }
 
+    @Step("Create new defect.")
     public DefectsPage createDefect() {
-        driver.findElement(By.xpath("//button[text()='Create defect']")).click();
+        driver.findElement(By.xpath(CREATE_DEFECT_BUTTON)).click();
         return new DefectsPage(driver);
     }
 
+    @Step("Update selected defect.")
     public DefectsPage updateDefect() {
-        driver.findElement(By.xpath("//button[text()='Update defect']")).click();
+        driver.findElement(By.xpath(UPDATE_DEFECT)).click();
         return new DefectsPage(driver);
     }
 }

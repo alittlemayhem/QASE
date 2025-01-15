@@ -3,12 +3,14 @@ package tests.api;
 import io.qameta.allure.Description;
 import models.project.CreateProjectRq;
 import models.project.CreateProjectRs;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.BaseTest;
+
+import java.util.Optional;
 
 import static adapters.ProjectAPI.*;
 
-public class ProjectTest {
+public class ProjectTest extends BaseTest {
 
     @Test(testName = "Project via API", description = "Create project using API.")
     @Description("Create new project using available API functions")
@@ -18,8 +20,8 @@ public class ProjectTest {
                 .code("QA")
                 .build();
         CreateProjectRs rs = createProject(rq);
-        Assert.assertEquals(rs.getStatus(), true);
-        Assert.assertEquals(rs.getResult().getCode(), "QA");
+        softAssert.assertEquals(Optional.ofNullable(rs.getStatus()), true);
+        softAssert.assertEquals(rs.getResult().getCode(), "QA");
 
         getProjectByCode(rs.getResult().getCode());
 

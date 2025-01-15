@@ -1,9 +1,9 @@
 package adapters;
 
 import models.Response;
+import models.cases.CaseRs;
 import models.cases.CreateCaseRq;
 import models.cases.CreateCasesAtOnce;
-
 
 public class CasesAPI extends BaseAPI {
 
@@ -31,7 +31,7 @@ public class CasesAPI extends BaseAPI {
                 .statusCode(200);
     }
 
-    public static CreateCaseRq getSpecificCase(String code, String caseID) {
+    public static CaseRs getSpecificCase(String code, String caseID) {
        return spec
                .when()
                .get(caseUrl + code +"/"+ caseID)
@@ -39,7 +39,7 @@ public class CasesAPI extends BaseAPI {
                .log().all()
                .statusCode(200)
                .extract()
-               .as(CreateCaseRq.class);
+               .as(CaseRs.class);
     }
 
     public static void getAllCases(String code) {

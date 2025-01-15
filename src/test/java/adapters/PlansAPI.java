@@ -19,13 +19,15 @@ public class PlansAPI extends BaseAPI{
                 .as(Response.class);
     }
 
-    public static void getSpecificPlan(String code, String planID) {
-        spec
+    public static String getSpecificPlan(String code, String planID) {
+        return spec
                 .when()
                 .get(planUrl + code +"/"+ planID)
                 .then()
                 .log().all()
-                .statusCode(200);
+                .statusCode(200)
+                .extract()
+                .asString();
     }
 
     public static void updateSpecificPlan(String code, String planID, CreatePlanRq createPlanRq) {

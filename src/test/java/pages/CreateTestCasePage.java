@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import wrappers.Checkbox;
 import wrappers.PickList;
 
-public class CreateTestCasePage extends BasePage{
+public class CreateTestCasePage extends BasePage {
 
     private final String TITLE = "title",
             SAVE_BUTTON = "save-case",
@@ -28,9 +28,7 @@ public class CreateTestCasePage extends BasePage{
         new PickList(driver).selectPicklistItem("Priority", basicInfo.getPriority());
         new PickList(driver).selectPicklistItem("Type", basicInfo.getType());
         new PickList(driver).selectPicklistItem("Layer", basicInfo.getLayer());
-        new PickList(driver).selectPicklistItem("Is flaky", basicInfo.getIsFlaky());
         new PickList(driver).selectPicklistItem("Behavior", basicInfo.getBehavior());
-        new PickList(driver).selectPicklistItem("Automation status", basicInfo.getAutoStatus());
         new Checkbox(driver).selectCheckbox("To be automated", basicInfo.getToBeAuto());
         new Checkbox(driver).selectCheckbox("Muted case", basicInfo.getMuted());
         return this;

@@ -1,9 +1,7 @@
 package wrappers;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class PickList {
 
@@ -17,9 +15,6 @@ public class PickList {
 
     public void selectPicklistItem(String label, String option) {
         driver.findElement(By.xpath(String.format(DROPDOWN_PATTERN, label))).click();
-
-        WebElement element = driver.findElement(By.xpath(String.format(DROPDOWN_OPTION_PATTERN, option)));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", element);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        driver.findElement(By.xpath(String.format(DROPDOWN_OPTION_PATTERN, option))).click();
     }
 }

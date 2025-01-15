@@ -2,8 +2,11 @@ package tests.ui;
 
 import io.qameta.allure.Description;
 import models.defects.CreateDefectRq;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import tests.BaseTest;
+
+import java.util.List;
 
 import static adapters.DefectsAPI.createDefect;
 import static adapters.ProjectAPI.createProject;
@@ -28,13 +31,27 @@ public class DefectTest extends BaseTest {
                 .isPageOpened()
                 .createNewDefect()
                 .isPageOpened()
-                .fillRequiredDefectFields("title1", "result1", "Critical")
+                .fillRequiredDefectFields("Defect 1", "Result 1", "Critical")
                 .createDefect()
                 .successMessage();
 
-        assertEquals(actualMessage,
+        softAssert.assertEquals(actualMessage,
                 "Defect was created successfully!",
                 "Wrong message is shown or defect was not created.");
+
+        String defectCode = defectsPage.getDefectCode("Defect 1");
+        softAssert.assertEquals(defectCode,
+                "D-1",
+                "Incorrect defect code.");
+
+        List<WebElement> defects = defectsPage.getDefectsOnPage();
+        List<WebElement> defectCodes = defectsPage.getCodeDefectsOnPage();
+
+        softAssert.assertTrue(defectsPage.isDefectOnPage(defects, "Defect 1"),
+                "Defect was not created or title is incorrect.");
+
+        softAssert.assertTrue(defectsPage.isDefectCodeCorrect(defects, "Defect 1", defectCodes, "D-1"),
+                "Defect and coded do not match.");
 
         deleteProjectByCode("QASE");
     }

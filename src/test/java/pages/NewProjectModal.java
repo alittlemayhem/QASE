@@ -11,7 +11,7 @@ public class NewProjectModal extends BasePage{
     private static final By PROJECT_NAME = By.id("project-name");
     private static final By PROJECT_CODE = By.id("project-code");
     private static final String RADIOBUTTON_PATTERN = "//input[@value='%s']";
-    private static final String DROPDOWN = "//input[@id='select-search-:rm:']";
+    private static final String DROPDOWN = "//div[@role='combobox']";
     private static final String OWNER_GROUP = "//div[text()='Owner group']";
     private static final String CREATE_PROJECT_BUTTON = "//span[text()='Create project']";
 
@@ -39,15 +39,14 @@ public class NewProjectModal extends BasePage{
 
     @Step("Select radiobutton for mode access.")
     public NewProjectModal setRadioButtonValue(String buttonValue) {
-        // ИЛИ с ожиданием
-        // ИЛИ через JS click
         driver.findElement(By.xpath(String.format(RADIOBUTTON_PATTERN, buttonValue))).click();
         return this;
     }
 
+    // TO DO
     @Step("Select group owner for private access mode.")
     public NewProjectModal selectGroupOwner() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DROPDOWN))).click();
+        driver.findElement(By.xpath(DROPDOWN)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OWNER_GROUP))).click();
         return this;
     }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +18,7 @@ public class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    @Step("Get message about successful/unsuccessful action.")
     public String successMessage() {
         return driver.findElement(By.xpath(MESSAGE)).getText();
     }
