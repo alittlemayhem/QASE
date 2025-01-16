@@ -39,4 +39,4 @@ jobs:
     - name: Clear Maven cache
       run: rm -rf ~/.m2/repository/org/aspectj/aspectjweaver
     - name: Run tests
-      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN -DsuiteXmlFile=src/test/resources/СrossBrowser.xml
+      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN
