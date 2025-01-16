@@ -1,12 +1,14 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j2
 public class BasePage {
 
     WebDriver driver;
@@ -20,6 +22,7 @@ public class BasePage {
 
     @Step("Get message about successful/unsuccessful action.")
     public String successMessage() {
+        log.info("Obtating resultant message.");
         return driver.findElement(By.xpath(MESSAGE)).getText();
     }
 }

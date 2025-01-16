@@ -21,8 +21,8 @@ public class TestCaseTest extends BaseTest {
                 .login(user, password);
         createProject(proj_rq);
         String actualMessage = createdProjectPage.open("QASE")
-                        .switchToTestCaseByMainButton()
-                                .fillBasicSection(basicCaseInfo)
+                .switchToTestCaseByMainButton()
+                .fillBasicSection(basicCaseInfo)
                 .saveTestCase()
                 .successMessage();
 
@@ -77,7 +77,7 @@ public class TestCaseTest extends BaseTest {
                 .login(user, password);
         createProject(proj_rq);
         String actualMessage = createdProjectPage.open("QASE")
-                .switchToTestCaseByPlusButton()
+                .switchToTestCaseByMainButton()
                 .fillBasicSection(basicCaseInfo)
                 .fillTestCaseSteps(3)
                 .saveTestCase()

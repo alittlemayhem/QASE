@@ -56,16 +56,16 @@ public class ProjectTest extends BaseTest {
         String actualTitle = projectsPage.open()
                 .isPageOpened()
                 .createProject()
-                .setProjectName("QASEradio")
+                .setProjectName("QASE")
                 .setRadioButtonValue("public")
                 .clickCreateProject()
                 .getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
-                "QASERADIO repository",
+                "QASE repository",
                 "Incorrect name of the project.");
 
-        deleteProjectByCode("QASERADIO");
+        deleteProjectByCode("QASE");
     }
 
     @Test(testName = "Group project creation", description = "Create project with private access (group mode).")
@@ -76,16 +76,16 @@ public class ProjectTest extends BaseTest {
         String actualTitle = projectsPage.open()
                 .isPageOpened()
                 .createProject()
-                .setProjectName("QASEradio")
+                .setProjectName("QASE")
                 .setRadioButtonValue("group")
                 .selectGroupOwner()
                 .clickCreateProject()
                 .getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
-                "QASERADIO repository",
+                "QASE repository",
                 "Incorrect name of the project.");
 
-        deleteProjectByCode("QASERADIO");
+        deleteProjectByCode("QASE");
     }
 }

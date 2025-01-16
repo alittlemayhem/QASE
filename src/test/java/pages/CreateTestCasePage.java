@@ -2,11 +2,13 @@ package pages;
 
 import dto.TestСaseBasic;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import wrappers.Checkbox;
 import wrappers.PickList;
 
+@Log4j2
 public class CreateTestCasePage extends BasePage {
 
     private final String TITLE = "title",
@@ -22,6 +24,7 @@ public class CreateTestCasePage extends BasePage {
 
     @Step("Fill 'Basic' section for test case page.")
     public CreateTestCasePage fillBasicSection(TestСaseBasic basicInfo) {
+        log.info("Fill basic section for test case.");
         driver.findElement(By.id(TITLE)).sendKeys(basicInfo.getTitle());
         new PickList(driver).selectPicklistItem("Status", basicInfo.getStatus());
         new PickList(driver).selectPicklistItem("Severity", basicInfo.getSeverity());
@@ -36,6 +39,7 @@ public class CreateTestCasePage extends BasePage {
 
     @Step("Create specified amount of test steps - {numberOfSteps} - filled with some data.")
     public CreateTestCasePage fillTestCaseSteps(int numberOfSteps) {
+        log.info("Generate specified number of steps for test case.");
         for (int i = 1; i <= numberOfSteps; i++) {
             driver.findElement(By.xpath(ADD_STEP)).click();
 
@@ -50,6 +54,7 @@ public class CreateTestCasePage extends BasePage {
 
     @Step("Save created test case.")
     public CreatedProjectPage saveTestCase() {
+        log.info("Save test case.");
         driver.findElement(By.id(SAVE_BUTTON)).click();
         return new CreatedProjectPage(driver);
     }

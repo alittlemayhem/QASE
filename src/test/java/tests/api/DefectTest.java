@@ -16,11 +16,6 @@ import static adapters.ProjectAPI.deleteProjectByCode;
 
 public class DefectTest extends BaseTest {
 
-    @Test
-    public void runOnfail() {
-        deleteProjectByCode("QASE");
-    }
-
     CreateDefectRq rq = CreateDefectRq.builder()
             .title("Defect 1")
             .actualResult("Result 1")

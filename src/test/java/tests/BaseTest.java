@@ -23,6 +23,8 @@ import utils.PropertyReader;
 
 import java.time.Duration;
 
+import static adapters.ProjectAPI.deleteProjectByCode;
+
 public class BaseTest {
 
     WebDriver driver;
@@ -84,6 +86,7 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             AllureUtils.takeScreenshot(driver);
+            deleteProjectByCode("QASE");
         }
         if (driver != null) {
             driver.quit();
