@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASE Smoke Test">
+<suite name="QASE">
     <listeners>
         <listener class-name="tests.TestListener"/>
         <listener class-name="tests.AnnotationTransformer"/>
     </listeners>
     <test name="Chrome">
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="tests.ui.ProjectTest"/>
             <class name="tests.ui.TestCaseTest"/>
             <class name="tests.ui.TestSuiteTest"/>
             <class name="tests.ui.DefectTest"/>
             <class name="tests.ui.TestPlanTest"/>
-            <parameter name="browser" value="chrome"></parameter>
         </classes>
     </test> <!-- Test -->
     <test name="Edge">
+        <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="tests.ui.ProjectTest"/>
             <class name="tests.ui.TestCaseTest"/>
             <class name="tests.ui.TestSuiteTest"/>
             <class name="tests.ui.DefectTest"/>
             <class name="tests.ui.TestPlanTest"/>
-            <parameter name="browser" value="edge"></parameter>
         </classes>
     </test> <!-- Test -->
     <test name="API">
