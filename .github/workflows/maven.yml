@@ -37,4 +37,4 @@ jobs:
         browser: firefox
         version: latest
     - name: Run tests
-      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN
+      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN -DsuiteXmlFile=src/test/resources/СrossBrowser.xml
