@@ -36,7 +36,7 @@ jobs:
       with:
         browser: firefox
         version: latest
-    - name: Clear Maven cache
-      run: rm -rf ~/.m2/repository/org/aspectj/aspectjweaver
+    - name: Debug Maven Build
+      run: mvn clean install -X
     - name: Run tests
       run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN
