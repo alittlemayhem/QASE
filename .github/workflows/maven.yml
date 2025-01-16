@@ -36,7 +36,5 @@ jobs:
       with:
         browser: firefox
         version: latest
-    - name: Debug Maven Build
-      run: mvn clean install -X
     - name: Run tests
-      run: mvn clean test
+      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -Dtoken=$TOKEN
