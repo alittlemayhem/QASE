@@ -12,15 +12,15 @@ public class ProjectTest extends BaseTest {
     @Description("Creation of new project named 'QASE' and with code 'AQ'")
     public void checkCreateProjectWithRequiredFields() {
         loginPage.open()
-                .login(user, password);
-        String actualTitle = projectsPage.open()
+                .login(user, password)
                 .isPageOpened()
                 .createProject()
                 .isModalOpened()
                 .setProjectName("QASE")
                 .setProjectCode("AQ")
-                .clickCreateProject()
-                .getProjectTitle();
+                .clickCreateProject();
+
+        String actualTitle = createdProjectPage.getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
                 "AQ repository",
@@ -33,13 +33,13 @@ public class ProjectTest extends BaseTest {
     @Description("Creation of new project named 'QASE'")
     public void checkCreateProjectNameOnly() {
         loginPage.open()
-                .login(user, password);
-        String actualTitle = projectsPage.open()
+                .login(user, password)
                 .isPageOpened()
                 .createProject()
                 .setProjectName("QASE")
-                .clickCreateProject()
-                .getProjectTitle();
+                .clickCreateProject();
+
+        String actualTitle = createdProjectPage.getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
                 "QASE repository",
@@ -52,14 +52,14 @@ public class ProjectTest extends BaseTest {
     @Description("Creation of new project named 'QASE' with access mode 'Public'")
     public void checkCreatePublicProject() {
         loginPage.open()
-                .login(user, password);
-        String actualTitle = projectsPage.open()
+                .login(user, password)
                 .isPageOpened()
                 .createProject()
                 .setProjectName("QASE")
                 .setRadioButtonValue("public")
-                .clickCreateProject()
-                .getProjectTitle();
+                .clickCreateProject();
+
+        String actualTitle = createdProjectPage.getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
                 "QASE repository",
@@ -72,17 +72,17 @@ public class ProjectTest extends BaseTest {
     @Description("Creation of new project named 'QASE' with access mode 'Private' for specific group.")
     public void checkCreatePrivateProjectGroupAccess() {
         loginPage.open()
-                .login(user, password);
-        String actualTitle = projectsPage.open()
+                .login(user, password)
                 .isPageOpened()
                 .createProject()
                 .setProjectName("QASE")
                 .setRadioButtonValue("group")
                 .selectGroupOwner()
-                .clickCreateProject()
-                .getProjectTitle();
+                .clickCreateProject();
 
-        softAssert.assertEquals(actualTitle,
+        String actualTitle = createdProjectPage.getProjectTitle();
+
+                softAssert.assertEquals(actualTitle,
                 "QASE repository",
                 "Incorrect name of the project.");
 
