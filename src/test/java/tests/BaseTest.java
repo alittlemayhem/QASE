@@ -69,7 +69,7 @@ public class BaseTest {
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions eOptions = new EdgeOptions();
-            eOptions.addArguments("--headless");
+            eOptions.addArguments("headless");
             driver = new EdgeDriver();
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
