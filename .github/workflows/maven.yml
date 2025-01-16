@@ -20,8 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      USERNAME: ${{secrets.SD_USER}}
-      PASSWORD: ${{secrets.SD_PASSWORD}}
+      USERNAME: ${{secrets.USER}}
+      PASSWORD: ${{secrets.PASSWORD}}
       TOKEN: ${{secrets.TOKEN}}
 
     steps:
