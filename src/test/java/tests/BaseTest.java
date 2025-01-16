@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,6 +18,11 @@ import org.testng.asserts.SoftAssert;
 import pages.*;
 import utils.AllureUtils;
 import utils.PropertyReader;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.config.RestAssuredConfig;
+import io.restassured.config.ObjectMapperConfig;
+import io.restassured.mapper.ObjectMapperType;
 
 import java.time.Duration;
 
@@ -79,6 +82,12 @@ public class BaseTest {
         testPlanPage = new TestPlanPage(driver);
         projectsPage = new ProjectsPage(driver);
         newProjectModal = new NewProjectModal(driver);
+    }
+
+    static {
+        RestAssured.config = RestAssuredConfig.config()
+                .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
+                        .defaultObjectMapperType(ObjectMapperType.GSON));
     }
 
     @AfterMethod(alwaysRun = true)

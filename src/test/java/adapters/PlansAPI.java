@@ -1,5 +1,6 @@
 package adapters;
 
+import io.qameta.allure.Step;
 import models.CreatePlanRq;
 import models.Response;
 
@@ -7,6 +8,7 @@ public class PlansAPI extends BaseAPI{
 
     public static String planUrl = BASE_URL + "plan/";
 
+    @Step("Create test plan by API.")
     public static Response createPlan(CreatePlanRq createPlanRq, String code) {
         return spec
                 .body(createPlanRq)
@@ -19,6 +21,7 @@ public class PlansAPI extends BaseAPI{
                 .as(Response.class);
     }
 
+    @Step("Get test plan by API.")
     public static String getSpecificPlan(String code, String planID) {
         return spec
                 .when()
@@ -30,6 +33,7 @@ public class PlansAPI extends BaseAPI{
                 .asString();
     }
 
+    @Step("Update test plan by API.")
     public static void updateSpecificPlan(String code, String planID, CreatePlanRq createPlanRq) {
         spec
                 .body(createPlanRq)
@@ -40,6 +44,7 @@ public class PlansAPI extends BaseAPI{
                 .statusCode(200);
     }
 
+    @Step("Delete test plan by API.")
     public static void deleteSpecificPlan(String code, String planID) {
         spec
                 .when()

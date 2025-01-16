@@ -18,6 +18,7 @@ public class ProjectTest extends BaseTest {
         CreateProjectRq rq = CreateProjectRq.builder()
                 .title("QA Test")
                 .code("QA")
+                .access("all")
                 .build();
         CreateProjectRs rs = createProject(rq);
         softAssert.assertEquals(Optional.ofNullable(rs.getStatus()), true);

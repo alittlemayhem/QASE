@@ -1,5 +1,6 @@
 package adapters;
 
+import io.qameta.allure.Step;
 import models.project.CreateProjectRq;
 import models.project.CreateProjectRs;
 
@@ -7,6 +8,7 @@ public class ProjectAPI extends BaseAPI{
 
     public static String projectUrl = BASE_URL + "project/";
 
+    @Step("Create project by API.")
     public static CreateProjectRs createProject(CreateProjectRq createProjectRq) {
         return spec
                 .body(createProjectRq)
@@ -19,6 +21,7 @@ public class ProjectAPI extends BaseAPI{
                 .as(CreateProjectRs.class);
     }
 
+    @Step("Delete project by API.")
     public static void deleteProjectByCode(String code) {
        spec
                 .when()
@@ -28,6 +31,7 @@ public class ProjectAPI extends BaseAPI{
                 .statusCode(200);
     }
 
+    @Step("Get project by API.")
     public static void getProjectByCode(String code) {
         spec
                 .when()
