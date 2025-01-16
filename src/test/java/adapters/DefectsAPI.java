@@ -1,5 +1,6 @@
 package adapters;
 
+import io.qameta.allure.Step;
 import models.Response;
 import models.defects.CreateDefectRq;
 import models.defects.DefectResponse;
@@ -9,6 +10,7 @@ public class DefectsAPI extends BaseAPI{
 
     public static String defectUrl = BASE_URL + "defect/";
 
+    @Step("Create defect by API.")
     public static Response createDefect(CreateDefectRq createDefectRq, String code) {
         return spec
                 .body(gson.toJson(createDefectRq))
@@ -21,6 +23,7 @@ public class DefectsAPI extends BaseAPI{
                 .as(Response.class);
     }
 
+    @Step("Get specific defect by API.")
     public static DefectResponse getSpecificDefect(String code, String defectID) {
         return spec
                 .when()
@@ -32,6 +35,7 @@ public class DefectsAPI extends BaseAPI{
                 .as(DefectResponse.class);
     }
 
+    @Step("Update existing defect by API.")
     public static void updateSpecificDefect(String code, String defectID, CreateDefectRq createDefectRq) {
         spec
                 .body(gson.toJson(createDefectRq))
@@ -42,6 +46,7 @@ public class DefectsAPI extends BaseAPI{
                 .statusCode(200);
     }
 
+    @Step("Change status of defect to resolved by API.")
     public static void resolveSpecificDefect(String code, String defectID) {
         spec
                 .when()
@@ -51,6 +56,7 @@ public class DefectsAPI extends BaseAPI{
                 .statusCode(200);
     }
 
+    @Step("Change defect status by API.")
     public static void updateDefectStatus(String code, String defectID, Status status) {
         spec
                 .body(status)
@@ -61,6 +67,7 @@ public class DefectsAPI extends BaseAPI{
                 .statusCode(200);
     }
 
+    @Step("Delete defect by API.")
     public static void deleteSpecificDefect(String code, String defectID) {
         spec
                 .when()

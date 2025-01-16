@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASE Smoke Test">
+    <listeners>
+        <listener class-name="tests.TestListener"/>
+        <listener class-name="tests.AnnotationTransformer"/>
+    </listeners>
+    <test name="Chrome">
+        <classes>
+            <class name="tests.ui.ProjectTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.TestSuiteTest"/>
+            <class name="tests.ui.DefectTest"/>
+            <class name="tests.ui.TestPlanTest"/>
+            <parameter name="browser" value="chrome"></parameter>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Edge">
+        <classes>
+            <class name="tests.ui.ProjectTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.TestSuiteTest"/>
+            <class name="tests.ui.DefectTest"/>
+            <class name="tests.ui.TestPlanTest"/>
+            <parameter name="browser" value="edge"></parameter>
+        </classes>
+    </test> <!-- Test -->
+    <test name="API">
+        <classes>
+            <class name="tests.api.ProjectTest"/>
+            <class name="tests.api.CasesTest"/>
+            <class name="tests.api.SuitTest"/>
+            <class name="tests.api.DefectTest"/>
+            <class name="tests.api.PlanTest"/>
+            <class name="tests.api.RunsTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
