@@ -5,7 +5,7 @@
         <listener class-name="tests.TestListener"/>
         <listener class-name="tests.AnnotationTransformer"/>
     </listeners>
-    <test name="API">
+    <!--  <test name="API">
         <classes>
             <class name="tests.api.ProjectTest"/>
             <class name="tests.api.CasesTest"/>
@@ -14,8 +14,8 @@
             <class name="tests.api.PlanTest"/>
             <class name="tests.api.RunsTest"/>
         </classes>
-    </test> <!-- Test -->
-    <!-- <test name="Chrome">
+    </test> Test -->
+    <test name="Chrome">
        <parameter name="browser" value="chrome"></parameter>
        <classes>
            <class name="tests.ui.TestCaseTest"/>
@@ -23,8 +23,8 @@
            <class name="tests.ui.DefectTest"/>
            <class name="tests.ui.TestPlanTest"/>
        </classes>
-   </test>
-    <test name="Edge">
+    </test>
+    <!-- <test name="Edge">
         <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="tests.ui.TestCaseTest"/>
