@@ -16,7 +16,9 @@ public class TestSuiteTest extends BaseTest {
     public void checkCreateSuiteMain() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = createdProjectPage.open("QASE")
                 .openNewSuiteModalByMainButton()
                 .fillSuitData("TestSuite", "Descr", "Precond")
@@ -35,7 +37,9 @@ public class TestSuiteTest extends BaseTest {
     public void checkCreateSuiteTop() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = createdProjectPage.open("QASE")
                 .openNewSuiteModalByPlusButton()
                 .fillSuitData("TestSuite", "Descr", "Precond")
@@ -54,7 +58,9 @@ public class TestSuiteTest extends BaseTest {
     public void checkEditSuite() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createSuite(suite_rq, "QASE");
         String actualMessage = createdProjectPage.open("QASE")
                 .openEditSuiteModal()
@@ -74,7 +80,9 @@ public class TestSuiteTest extends BaseTest {
     public void checkDeleteSuite() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createSuite(suite_rq, "QASE");
         String actualMessage = createdProjectPage.open("QASE")
                 .deleteSuite()

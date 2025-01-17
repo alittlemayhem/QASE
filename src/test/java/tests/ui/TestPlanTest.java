@@ -43,7 +43,9 @@ public class TestPlanTest extends BaseTest {
     public void checkCreatePlan() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createCase(case_rq, "QASE");
         String actualMessage = testPlanPage.open("QASE")
                 .createTestPlan()
@@ -70,7 +72,9 @@ public class TestPlanTest extends BaseTest {
     public void checkEditPlan() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createCase(case_rq, "QASE");
         createPlan(rq, "QASE");
         String actualMessage = testPlanPage.open("QASE")
@@ -95,7 +99,9 @@ public class TestPlanTest extends BaseTest {
     public void checkDeletePlan() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createCase(case_rq, "QASE");
         createPlan(rq, "QASE");
         String actualMessage = testPlanPage.open("QASE")
@@ -120,7 +126,9 @@ public class TestPlanTest extends BaseTest {
     public void checkDeleteSelectedPlans() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createCase(case_rq, "QASE");
         createPlan(rq, "QASE");
         createPlan(rq2, "QASE");

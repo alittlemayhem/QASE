@@ -26,7 +26,9 @@ public class DefectTest extends BaseTest {
     public void checkCreateDefect() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = defectsPage.open("QASE")
                 .isPageOpened()
                 .createNewDefect()
@@ -61,7 +63,9 @@ public class DefectTest extends BaseTest {
     public void checkEditDefect() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createDefect(rq, "QASE");
         String actualMessage = defectsPage
                 .open("QASE")
@@ -83,7 +87,9 @@ public class DefectTest extends BaseTest {
     public void checkDeleteDefect() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         createDefect(rq, "QASE");
         String actualMessage = defectsPage
                 .open("QASE")

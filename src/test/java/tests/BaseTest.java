@@ -1,6 +1,10 @@
 package tests;
 
 import io.qameta.allure.Description;
+import io.restassured.RestAssured;
+import io.restassured.config.ObjectMapperConfig;
+import io.restassured.config.RestAssuredConfig;
+import io.restassured.mapper.ObjectMapperType;
 import models.cases.CreateCaseRq;
 import models.project.CreateProjectRq;
 import models.suite.CreateSuiteRq;
@@ -19,11 +23,6 @@ import org.testng.asserts.SoftAssert;
 import pages.*;
 import utils.AllureUtils;
 import utils.PropertyReader;
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.config.RestAssuredConfig;
-import io.restassured.config.ObjectMapperConfig;
-import io.restassured.mapper.ObjectMapperType;
 
 import java.time.Duration;
 
@@ -31,7 +30,11 @@ import static adapters.ProjectAPI.deleteProjectByCode;
 
 public class BaseTest {
 
-    WebDriver driver;
+    static {
+        RestAssured.config = RestAssuredConfig.config()
+                .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
+                        .defaultObjectMapperType(ObjectMapperType.GSON));
+    }
 
     public LoginPage loginPage;
     public DefectsPage defectsPage;
@@ -57,6 +60,7 @@ public class BaseTest {
 
     public String user = System.getProperty("user", PropertyReader.getProperty("user"));
     public String password = System.getProperty("password", PropertyReader.getProperty("password"));
+    WebDriver driver;
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -69,8 +73,8 @@ public class BaseTest {
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions eOptions = new EdgeOptions();
-            eOptions.addArguments("headless");
-            driver = new EdgeDriver();
+            eOptions.addArguments("--headless");
+            driver = new EdgeDriver(eOptions);
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
@@ -86,12 +90,6 @@ public class BaseTest {
         testPlanPage = new TestPlanPage(driver);
         projectsPage = new ProjectsPage(driver);
         newProjectModal = new NewProjectModal(driver);
-    }
-
-    static {
-        RestAssured.config = RestAssuredConfig.config()
-                .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
-                        .defaultObjectMapperType(ObjectMapperType.GSON));
     }
 
     @AfterMethod(alwaysRun = true)

@@ -45,6 +45,7 @@ public class CreatedProjectPage extends BasePage {
     public NewSuiteModal openNewSuiteModalByMainButton() {
         log.info("Open modal to create new suite by clicking on 'Create new suite' button.");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_NEW_SUITE_BUTTON))).click();
+        //driver.findElement(By.xpath(CREATE_NEW_SUITE_BUTTON)).click();
         return new NewSuiteModal(driver);
     }
 
@@ -79,7 +80,8 @@ public class CreatedProjectPage extends BasePage {
     @Step("Switch to new test case creation page by 'Create new case' button")
     public CreateTestCasePage switchToTestCaseByMainButton() {
         log.info("Switch to new test case creation page by 'Create new case' button");
-        driver.findElement(By.xpath(CREATE_NEW_CASE_BUTTON)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_NEW_CASE_BUTTON))).click();
+        //driver.findElement(By.xpath(CREATE_NEW_CASE_BUTTON)).click();
         return new CreateTestCasePage(driver);
     }
 

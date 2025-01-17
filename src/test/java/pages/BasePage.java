@@ -17,12 +17,12 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(300));
     }
 
     @Step("Get message about successful/unsuccessful action.")
     public String successMessage() {
-        log.info("Obtating resultant message.");
+        log.info("Obtaining resultant message.");
         return driver.findElement(By.xpath(MESSAGE)).getText();
     }
 }

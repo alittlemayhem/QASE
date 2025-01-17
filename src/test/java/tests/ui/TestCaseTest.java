@@ -19,7 +19,9 @@ public class TestCaseTest extends BaseTest {
     public void checkCreateCaseMain() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = createdProjectPage.open("QASE")
                 .switchToTestCaseByMainButton()
                 .fillBasicSection(basicCaseInfo)
@@ -47,7 +49,9 @@ public class TestCaseTest extends BaseTest {
     public void checkCreateCaseTop() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = createdProjectPage.open("QASE")
                 .switchToTestCaseByPlusButton()
                 .fillBasicSection(basicCaseInfo)
@@ -75,7 +79,9 @@ public class TestCaseTest extends BaseTest {
     public void checkCreateCaseWithSteps() {
         loginPage.open()
                 .login(user, password);
-        createProject(proj_rq);
+        if (!projectsPage.checkIfProjectExists()) {
+            createProject(proj_rq);
+        }
         String actualMessage = createdProjectPage.open("QASE")
                 .switchToTestCaseByMainButton()
                 .fillBasicSection(basicCaseInfo)
