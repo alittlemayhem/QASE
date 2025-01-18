@@ -17,6 +17,7 @@
     </test>
     <test name="Chrome">
        <classes>
+           <class name="tests.ui.ProjectTest"/>
            <class name="tests.ui.TestCaseTest"/>
            <class name="tests.ui.TestSuiteTest"/>
            <class name="tests.ui.DefectTest"/>
@@ -27,6 +28,7 @@
     <test name="Edge">
         <parameter name="browser" value="edge"></parameter>
         <classes>
+            <class name="tests.ui.ProjectTest"/>
             <class name="tests.ui.TestCaseTest"/>
             <class name="tests.ui.TestSuiteTest"/>
             <class name="tests.ui.DefectTest"/>

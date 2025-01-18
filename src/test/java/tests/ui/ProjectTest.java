@@ -23,7 +23,7 @@ public class ProjectTest extends BaseTest {
         String actualTitle = createdProjectPage.getProjectTitle();
 
         softAssert.assertEquals(actualTitle,
-                "AQ repository",
+                "QASE repository",
                 "Incorrect name of the project.");
 
         deleteProjectByCode("QASE");
