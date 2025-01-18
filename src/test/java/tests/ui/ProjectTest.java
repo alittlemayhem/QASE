@@ -16,8 +16,8 @@ public class ProjectTest extends BaseTest {
                 .isPageOpened()
                 .createProject()
                 .isModalOpened()
-                .setProjectName("QASE")
-                .setProjectCode("AQ")
+                .setProjectName("QA")
+                .setProjectCode("QASE")
                 .clickCreateProject();
 
         String actualTitle = createdProjectPage.getProjectTitle();
@@ -26,7 +26,7 @@ public class ProjectTest extends BaseTest {
                 "AQ repository",
                 "Incorrect name of the project.");
 
-        deleteProjectByCode("AQ");
+        deleteProjectByCode("QASE");
     }
 
     @Test(testName = "Project with name only", description = "Create project with filled name.")
