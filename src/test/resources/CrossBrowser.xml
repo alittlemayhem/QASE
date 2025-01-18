@@ -16,12 +16,12 @@
         </classes>
     </test> Test -->
     <test name="Chrome">
-       <parameter name="browser" value="chrome"></parameter>
        <classes>
            <class name="tests.ui.TestCaseTest"/>
            <class name="tests.ui.TestSuiteTest"/>
            <class name="tests.ui.DefectTest"/>
            <class name="tests.ui.TestPlanTest"/>
+           <parameter name="browser" value="chrome"></parameter>
        </classes>
     </test>
     <!-- <test name="Edge">

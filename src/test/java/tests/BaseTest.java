@@ -97,7 +97,7 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             AllureUtils.takeScreenshot(driver);
-            deleteProjectByCode("QASE");
+            //deleteProjectByCode("QASE");
         }
         if (driver != null) {
             driver.quit();
