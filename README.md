@@ -2,7 +2,7 @@
 
 ## Tech stack
 
-Проект разработан с использованием следующих технологий и инструментов:
+The following tools were used:
 
 - **Programming language:** Java 11
 - **Testing framework:** TestNG
