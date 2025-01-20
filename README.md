@@ -60,7 +60,7 @@ QASE/
    ```
 2. Switch to project repository:
    ```bash
-   cd your-repository
+   cd QASE
    ```
 3. Install dependecies:
     ```bash
