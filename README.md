@@ -42,7 +42,7 @@ QASE/
 │       ├── utils/     
 │       ├── wrappers/    
 │   └── resources/
-├── pom.xml   # Файл сборки
+├── pom.xml   
 └── README.md       
 ```
 
