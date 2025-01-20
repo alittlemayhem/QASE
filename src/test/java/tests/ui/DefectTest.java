@@ -33,7 +33,7 @@ public class DefectTest extends BaseTest {
                 .isPageOpened()
                 .createNewDefect()
                 .isPageOpened()
-                .fillRequiredDefectFields("Defect 1", "Result 1", "Critical")
+                .fillRequiredDefectFields("Defect 1", "Result 1", "Major")
                 .createDefect()
                 .successMessage();
 

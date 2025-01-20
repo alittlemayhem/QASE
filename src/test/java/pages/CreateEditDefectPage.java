@@ -36,7 +36,7 @@ public class CreateEditDefectPage extends BasePage{
         log.info("Fill in required field for defect.");
         driver.findElement(By.xpath(DEFECT_TITLE)).sendKeys(defTitle);
         driver.findElement(By.xpath(ACTUAL_RESULT)).sendKeys(result);
-        //new PickList(driver).selectPicklistItem("Severity", severity);
+        new PickList(driver).selectDefectOptions("Severity", severity);
         return this;
     }
 
