@@ -79,7 +79,7 @@ QASE/
   mvn allure:serve
   ```
 
-## Отчеты и результаты
+## Reporting test results
 
 Reports of test results are automatically saved to `target/allure-results`.
 To check allure reports run:
